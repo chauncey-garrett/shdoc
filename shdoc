@@ -130,13 +130,12 @@ function warn(message) {
 # @set doc Add function documentation to doc output.
 # @set toc Add link to function documentation to table of contents.
 function process_function(text) {
-    if ( \
-        (length(docblock) == 0 && description == "") \
-        || in_example \
-    ) {
-        # If docblock and description are empty,
-        # or if function in example section,
-        # skip function declaration.
+    if (in_example) {
+        return
+    }
+
+    if ((!isarray(docblock) || length(docblock) == 0) && description == "") {
+        is_internal = 0
         return
     }
 
@@ -906,7 +905,7 @@ match($0, /^([[:blank:]]*#[[:blank:]]+)@(stdin|stdout|stderr)[[:blank:]]+(.*[^[:
 }
 
 # If line look like a function declaration but is missing opening bracket,
-/^[[:blank:]]*(function[[:blank:]]+)?([a-zA-Z0-9_\-:-\\.]+)[[:blank:]]*(\([[:blank:]]*\))?/ \
+/^[[:blank:]]*((function[[:blank:]]+)?[a-zA-Z0-9_\-:-\\.]+[[:blank:]]*\([[:blank:]]*\)|function[[:blank:]]+[a-zA-Z0-9_\-:-\\.]+)[[:blank:]]*$/ \
 {
     # store it for future use
     debug("→ look like a function declaration, store line")
@@ -937,6 +936,7 @@ match($0, /^([[:blank:]]*#[[:blank:]]+)@(stdin|stdout|stderr)[[:blank:]]+(.*[^[:
     # Line is not an opening bracket,
     # this is not a function declaration.
     function_declaration = ""
+    is_internal = 0
 
     # Add current (section) description to output.
     handle_description();
