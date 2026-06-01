@@ -1,6 +1,12 @@
-.PHONY: examples
+.PHONY: examples lint
 examples:
 	$(MAKE) -C examples/ -B
+
+lint:
+	@if git grep -n '^#!/bin/bash' -- ':!vendor'; then \
+		echo >&2 'Use #!/usr/bin/env bash instead of #!/bin/bash.'; \
+		exit 1; \
+	fi
 
 vendor/%/Makefile:
 	bash -c 'source vendor/github.com/reconquest/import.bash/import.bash && \

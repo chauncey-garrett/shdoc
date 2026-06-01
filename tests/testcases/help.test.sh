@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 tests:ensure ./shdoc --help
 tests:assert-stdout-re '^Usage: shdoc \[OPTIONS\] \[FILE\]'

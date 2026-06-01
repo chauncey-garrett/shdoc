@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 tests:put input <<EOF
 # @description Asserts that a variable is an array.
