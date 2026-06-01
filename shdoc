@@ -2,6 +2,8 @@
 # vim: ft=awk ts=4 sw=4
 
 BEGIN {
+    shdoc_version = "1.4"
+
     handle_command_option()
 
     if (! style) {
@@ -93,7 +95,7 @@ function print_help() {
 }
 
 function print_version() {
-    print "shdoc v1.3"
+    print "shdoc v" shdoc_version
 }
 
 # @description Display the given error message with its line number on stderr.
