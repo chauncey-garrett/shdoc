@@ -1,6 +1,6 @@
 SHFMT_FILES = $(shell git ls-files '*.sh' ':!vendor/**')
 
-.PHONY: examples fmt lint
+.PHONY: examples fmt lint install
 examples:
 	$(MAKE) -C examples/ -B
 
@@ -19,10 +19,17 @@ vendor/%/Makefile:
 
 include vendor/github.com/reconquest/test-runner.bash/Makefile
 
-DST = /usr/local/bin/
+INSTALL ?= install
+MANPAGE = contrib/shdoc.1
+PREFIX ?= /usr/local
+DST ?= $(PREFIX)/bin
+MANDIR ?= $(PREFIX)/share/man/man1
+
 install:
+	$(INSTALL) -d "$(DESTDIR)$(DST)" "$(DESTDIR)$(MANDIR)"
 	case $$OSTYPE in \
-	darwin*) sed 's/\/usr\/bin\/gawk/\/usr\/bin\/env gawk/' shdoc > $(DST)/shdoc;; \
-	*) cp shdoc $(DST);; \
+	darwin*) sed 's/\/usr\/bin\/gawk/\/usr\/bin\/env gawk/' shdoc > "$(DESTDIR)$(DST)/shdoc";; \
+	*) $(INSTALL) -m 0755 shdoc "$(DESTDIR)$(DST)/shdoc";; \
 	esac
-	chmod +x $(DST)shdoc
+	chmod +x "$(DESTDIR)$(DST)/shdoc"
+	$(INSTALL) -m 0644 $(MANPAGE) "$(DESTDIR)$(MANDIR)/shdoc.1"
