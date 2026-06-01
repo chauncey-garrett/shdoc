@@ -386,6 +386,12 @@ Display command-line help with `--help` or `-h`:
 $ shdoc --help
 ```
 
+Display version information with `--version`:
+
+```bash
+$ shdoc --version
+```
+
 ## Installation
 
 ### Arch Linux

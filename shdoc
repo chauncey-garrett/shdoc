@@ -2,7 +2,7 @@
 # vim: ft=awk ts=4 sw=4
 
 BEGIN {
-    handle_help_option()
+    handle_command_option()
 
     if (! style) {
         style = "github"
@@ -65,11 +65,15 @@ BEGIN {
     debug_file = "/dev/fd/" debug_fd
 }
 
-function handle_help_option(    arg_index) {
+function handle_command_option(    arg_index) {
     for (arg_index = 1; arg_index < ARGC; arg_index++) {
         if (ARGV[arg_index] == "--help" || ARGV[arg_index] == "-h") {
             print_help()
-            help_requested = 1
+            exit 0
+        }
+
+        if (ARGV[arg_index] == "--version") {
+            print_version()
             exit 0
         }
     }
@@ -84,7 +88,12 @@ function print_help() {
     print "Documentation is written to standard output."
     print ""
     print "Options:"
-    print "  -h, --help    Show this help message and exit."
+    print "  -h, --help       Show this help message and exit."
+    print "      --version    Show version information and exit."
+}
+
+function print_version() {
+    print "shdoc v1.2"
 }
 
 # @description Display the given error message with its line number on stderr.
