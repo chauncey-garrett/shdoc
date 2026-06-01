@@ -146,7 +146,28 @@ function render(type, text) {
     )
 }
 
-function render_toc_link(text) {
+function render_urls(text,    rest, result, prefix, url, context) {
+    rest = text
+    result = ""
+
+    while (match(rest, /[a-z]+:\/\/[-[:alnum:]+&@#\/%?=~_|!:,.;]*[-[:alnum:]\+&@#\/%=~_|]/)) {
+        prefix = substr(rest, 1, RSTART - 1)
+        url = substr(rest, RSTART, RLENGTH)
+        context = result prefix
+
+        if (substr(context, length(context) - 1, 2) == "](") {
+            result = context url
+        } else {
+            result = context "[" url "](" url ")"
+        }
+
+        rest = substr(rest, RSTART + RLENGTH)
+    }
+
+    return result rest
+}
+
+function render_toc_link(text,    rendered_text, url) {
     # URL processing
     # @see Regexp sourced from https://stackoverflow.com/questions/3183444/check-for-valid-link-url
 
@@ -155,17 +176,9 @@ function render_toc_link(text) {
         return "[" text "](" text ")"
     }
 
-    # If text contains URLs, but not a markdown links, transform the URLs in markdown links.
-    # Assume a URL is in a markdown link if it follow '](' string.
-    if ("  " text " " ~ /[^\]]([^a-z(]|\()[a-z]+:\/\/[-[:alnum:]+&@#\/%?=~_|!:,.;]*[-[:alnum:]\+&@#\/%=~_|]/) {
-        # Add space at the end of text to allow for easy detection of URLs.
-        text = "  " text " "
-        # Enclose URLs in markdown links.
-        text = gensub(/([^\]]([^a-z(]|\())([a-z]+:\/\/[-[:alnum:]+&@#\/%?=~_|!:,.;]*[-[:alnum:]\+&@#\/%=~_|])/, "\\1[\\3](\\3)", "g", text)
-        # Trim spaces added to ease unenclosed URL regex creation.
-        gsub(/^[[:blank:]]*/, "", text)
-        gsub(/[[:blank:]]*$/, "", text)
-        return text
+    rendered_text = render_urls(text)
+    if (rendered_text != text) {
+        return rendered_text
     }
 
     # If title contains a markdown link, return as is.
