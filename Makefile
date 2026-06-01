@@ -1,6 +1,11 @@
-.PHONY: examples lint
+SHFMT_FILES = $(shell git ls-files '*.sh' ':!vendor/**')
+
+.PHONY: examples fmt lint
 examples:
 	$(MAKE) -C examples/ -B
+
+fmt:
+	shfmt -i 4 -ci -sr -w $(SHFMT_FILES)
 
 lint:
 	@if git grep -n '^#!/bin/bash' -- ':!vendor'; then \
