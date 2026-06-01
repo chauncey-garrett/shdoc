@@ -93,7 +93,7 @@ function print_help() {
 }
 
 function print_version() {
-    print "shdoc v1.2"
+    print "shdoc v1.3"
 }
 
 # @description Display the given error message with its line number on stderr.

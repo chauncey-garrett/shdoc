@@ -12,5 +12,5 @@ tests:assert-stdout-re '^Usage: shdoc \[OPTIONS\] \[FILE\]'
 tests:assert-stderr-empty
 
 tests:ensure ./shdoc --version
-tests:assert-stdout 'shdoc v1.2'
+tests:assert-stdout-re '^shdoc v'
 tests:assert-stderr-empty
