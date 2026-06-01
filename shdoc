@@ -694,7 +694,7 @@ function debug(msg) {
 }
 
 in_description {
-    if (/^[^[[:space:]]*#]|^[[:space:]]*# @[a-z]+|^[[:space:]]*[^#]|^[[:space:]]*$/ && !match($0, /@description/)) {
+    if (/^[[:space:]]*$/ || /^[[:space:]]*[^[:space:]#]/ || (/^[[:space:]]*#[[:blank:]]+@[a-z]+/ && ! /^[[:space:]]*#[[:blank:]]+@description([[:blank:]]|$)/)) {
         debug("→ → in_description: leave")
 
         in_description = 0
