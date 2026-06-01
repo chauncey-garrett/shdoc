@@ -1,7 +1,9 @@
-#!/usr/bin/gawk -f
+#!/usr/bin/gawk -E
 # vim: ft=awk ts=4 sw=4
 
 BEGIN {
+    handle_help_option()
+
     if (! style) {
         style = "github"
     }
@@ -61,6 +63,28 @@ BEGIN {
         debug_fd = 2
     }
     debug_file = "/dev/fd/" debug_fd
+}
+
+function handle_help_option(    arg_index) {
+    for (arg_index = 1; arg_index < ARGC; arg_index++) {
+        if (ARGV[arg_index] == "--help" || ARGV[arg_index] == "-h") {
+            print_help()
+            help_requested = 1
+            exit 0
+        }
+    }
+}
+
+function print_help() {
+    print "Usage: shdoc [OPTIONS] [FILE]"
+    print ""
+    print "Generate Markdown documentation from shell source comments."
+    print ""
+    print "If FILE is omitted, shdoc reads from standard input."
+    print "Documentation is written to standard output."
+    print ""
+    print "Options:"
+    print "  -h, --help    Show this help message and exit."
 }
 
 # @description Display the given error message with its line number on stderr.
@@ -901,6 +925,10 @@ match($0, /^([[:blank:]]*#[[:blank:]]+)@(stdin|stdout|stderr)[[:blank:]]+(.*[^[:
 }
 
 END {
+    if (help_requested) {
+        exit 0
+    }
+
     debug("→ END {")
     debug("→ → file_title:       [" file_title "]")
     debug("→ → file_brief:       [" file_brief "]")

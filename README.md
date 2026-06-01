@@ -367,10 +367,22 @@ show-msg() {
 
 ## Usage
 
-shdoc has no args and expects a shell script with comments on stdin and will produce markdown as stdout.
+shdoc expects a shell script with comments on stdin and produces markdown on stdout.
 
 ```bash
 $ shdoc < your-shell-script.sh > doc.md
+```
+
+You can also pass an input file directly:
+
+```bash
+$ shdoc your-shell-script.sh > doc.md
+```
+
+Display command-line help with `--help` or `-h`:
+
+```bash
+$ shdoc --help
 ```
 
 ## Installation
