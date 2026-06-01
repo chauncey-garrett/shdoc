@@ -10,7 +10,7 @@
 #   - three lines message with trailing spaces.
 #   - appears between @stdin and @stderr sections.
 
-tests:put input <<EOF
+tests:put input << EOF
 # @name shdoc @stdout tests
 # @brief Test @stdout functionnality.
 # @description Tests for shdoc processing of @stdout keyword.
@@ -30,7 +30,7 @@ test-stdout() {
 }
 EOF
 
-tests:put expected <<EOF
+tests:put expected << EOF
 # shdoc @stdout tests
 
 Test @stdout functionnality.

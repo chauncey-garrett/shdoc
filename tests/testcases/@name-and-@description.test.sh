@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-tests:put input <<EOF
+tests:put input << EOF
 # @name Project Name
 # @brief Brief
 # @description a
@@ -27,7 +27,7 @@ c() {
 }
 EOF
 
-tests:put expected <<EOF
+tests:put expected << EOF
 # Project Name
 
 Brief

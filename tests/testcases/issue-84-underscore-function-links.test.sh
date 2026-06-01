@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-tests:put input <<EOF
+tests:put input << EOF
 # @description Asserts that a variable is an array.
 # @arg \$1 string The name of the variable to check.
 # @exitcode 0 If the assertion succeeded.
@@ -10,7 +10,7 @@ tests:put input <<EOF
 stdlib_array_assert_is_array() { :; }
 EOF
 
-tests:put expected <<EOF
+tests:put expected << EOF
 ## Index
 
 * [stdlib_array_assert_is_array](#stdlib_array_assert_is_array)

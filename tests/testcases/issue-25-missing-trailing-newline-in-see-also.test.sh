@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-tests:put input <<EOF
+tests:put input << EOF
 #!/usr/bin/env bash
 
 # @description a desc for fn1
@@ -15,7 +15,7 @@ fn2(){
 }
 EOF
 
-tests:put expected <<EOF
+tests:put expected << EOF
 ## Index
 
 * [fn1](#fn1)

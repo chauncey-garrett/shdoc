@@ -33,7 +33,7 @@
 say-hello() {
     if [[ ! "$1" ]]; then
         echo "Oups !" >&2
-        return 1;
+        return 1
     fi
 
     echo "Hello $1"

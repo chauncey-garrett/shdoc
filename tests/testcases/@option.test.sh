@@ -15,7 +15,7 @@
 #   - appears before numeric argument list.
 #   - appears between @example and @set sections.
 
-tests:put input <<EOF
+tests:put input << EOF
 # @name shdoc @option tests for options
 # @brief Test @option functionnality for options.
 # @description Tests for shdoc processing of @option keyword.
@@ -41,7 +41,7 @@ test-arg() {
 }
 EOF
 
-tests:put expected <<EOF
+tests:put expected << EOF
 # shdoc @option tests for options
 
 Test @option functionnality for options.

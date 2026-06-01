@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-tests:put input <<EOF
+tests:put input << EOF
 #!/usr/bin/env bash
 
 # @arg \$1 string fn var.
@@ -40,7 +40,7 @@ function	tab4	()	{
 }
 EOF
 
-tests:put expected <<EOF
+tests:put expected << EOF
 ## Index
 
 * [fn](#fn)

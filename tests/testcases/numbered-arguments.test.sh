@@ -9,7 +9,7 @@
 #   - arg message with indentation and trailing spaces.
 #   - appears between @example and @set sections.
 
-tests:put input <<EOF
+tests:put input << EOF
 # @name shdoc @arg tests
 # @brief Test @arg functionnality.
 # @description Tests for shdoc processing of @arg keyword.
@@ -33,7 +33,7 @@ test-arg() {
 }
 EOF
 
-tests:put expected <<EOF
+tests:put expected << EOF
 # shdoc @arg tests
 
 Test @arg functionnality.

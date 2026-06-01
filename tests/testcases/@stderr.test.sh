@@ -20,7 +20,7 @@
 #   - a text containing a markdown link.
 #   - a text containing a markdown link and a URL.
 
-tests:put input <<EOF
+tests:put input << EOF
 # @name shdoc @stderr tests
 # @brief Test @stderr functionnality.
 # @description Tests for shdoc processing of @stderr keyword.
@@ -42,7 +42,7 @@ test-stderr() {
 }
 EOF
 
-tests:put expected <<EOF
+tests:put expected << EOF
 # shdoc @stderr tests
 
 Test @stderr functionnality.

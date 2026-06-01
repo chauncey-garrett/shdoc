@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-tests:put input <<EOF
+tests:put input << EOF
 # @description Same, as \`tests:eval\`, but writes stdout into given variable and
 # return stderr as expected.
 #
@@ -27,7 +27,7 @@ tests:value() {
 }
 EOF
 
-tests:put expected <<EOF
+tests:put expected << EOF
 ## Index
 
 * [tests:value](#testsvalue)

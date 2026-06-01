@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-tests:put input <<EOF
+tests:put input << EOF
 # @description Multiline description goes here and
 # there
 #
@@ -28,7 +28,7 @@ tests:put input <<EOF
 some:first:func() {
 EOF
 
-tests:put expected <<EOF
+tests:put expected << EOF
 ## Index
 
 * [some:first:func](#somefirstfunc)

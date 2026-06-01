@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-tests:put input <<EOF
+tests:put input << EOF
 # @description example function 1
 #
 # @noargs
@@ -16,7 +16,7 @@ some_other_func() {
 }
 EOF
 
-tests:put expected <<EOF
+tests:put expected << EOF
 ## Index
 
 * [some:first:func](#somefirstfunc)

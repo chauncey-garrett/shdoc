@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-tests:put input <<EOF
+tests:put input << EOF
 #!/sbin/sh
 
 # @description My super function.
@@ -17,7 +17,7 @@ say-hello()
 
 EOF
 
-tests:put expected <<EOF
+tests:put expected << EOF
 ## Index
 
 * [say-hello](#say-hello)

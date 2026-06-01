@@ -19,7 +19,7 @@
 #   - a markdown link.
 #   - a text containing a markdown link.
 #   - a text containing a markdown link and a URL.
-tests:put input <<EOF
+tests:put input << EOF
 # @name shdoc @see tests
 # @brief Test @see functionnality.
 # @description Tests for shdoc processing of @see keyword.
@@ -45,7 +45,7 @@ test-working-see() {
 
 EOF
 
-tests:put expected <<EOF
+tests:put expected << EOF
 # shdoc @see tests
 
 Test @see functionnality.
