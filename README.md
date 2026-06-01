@@ -12,6 +12,7 @@ definitions, and creates a markdown file with ready to use documentation.
 * [Annotations](#annotations)
 * [Usage](#usage)
 * [Installation](#installation)
+* [Vim syntax highlighting](#vim-syntax-highlighting)
 * [More examples](#examples)
 * [License](#license)
 
@@ -404,6 +405,24 @@ sudo make install
 ### Others
 
 Unfortunately, there are no packages of shdoc for other distros, but we're looking for contributions.
+
+## Vim syntax highlighting
+
+shdoc includes Vim syntax highlighting for annotations in shell files. With [vim-plug](https://github.com/junegunn/vim-plug), add this to your Vim configuration:
+
+```vim
+call plug#begin('~/.vim/plugged')
+Plug 'reconquest/shdoc', { 'rtp': 'contrib/vim' }
+call plug#end()
+```
+
+Then run:
+
+```vim
+:PlugInstall
+```
+
+The syntax file is loaded as an `after/syntax/sh.vim` file, so it extends Vim's normal shell highlighting.
 
 ## Examples
 
