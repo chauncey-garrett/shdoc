@@ -411,6 +411,14 @@ $ shdoc --version
 
 Arch Linux users can install shdoc using package in AUR: [shdoc-git](https://aur.archlinux.org/packages/shdoc-git)
 
+### Fedora & EPEL
+
+Fedora and EPEL releases ship the `shdoc` package:
+
+```bash
+dnf install shdoc
+```
+
 ### Using Git
 
 NOTE: shdoc requires gawk: `apt-get install gawk`
